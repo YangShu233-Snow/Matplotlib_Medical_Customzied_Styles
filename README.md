@@ -32,11 +32,18 @@
    ```bash
    git clone https://github.com/YangShu233-Snow/matplotlib_GraphPad_style
    ```
-2. 进入你感兴趣的样式目录，例如柱状图：
+2. 安装环境
+   ```bash
+   # 强烈建议使用虚拟环境，假设你已经在本地准备好了对应的 Conda 虚拟环境
+   # Python>=3.9 均可，推荐版本为 3.12.3
+   conda activate Your_Enviroment
+   pip install -r requirements.txt
+   ```
+3. 进入你感兴趣的样式目录，例如柱状图：
    ```bash
    cd matplotlib_GraphPad_style/styles/column_chart_graphpad
    ```
-3. 运行示例代码生成图表：
+4. 运行示例代码生成图表：
    ```bash
    python example.py
    ```
