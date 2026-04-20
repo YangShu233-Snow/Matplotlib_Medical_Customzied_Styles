@@ -1,4 +1,4 @@
-# matplotlib_GraphPad_style
+# Matplotlib_Medial_Customed_Style
 
 > Collections of customed styles for medical field.
 
@@ -61,7 +61,9 @@
 
 ## 🤝 贡献指南
 
-欢迎提交 Issue 或 Pull Request 来添加新的学术图表风格！在提交 PR 时，请确保遵循本仓库现有的目录结构，并为你的样式提供 `.mplstyle` 文件、`example.py` 和对应的 `readme.md`。
+欢迎提交 Issue 或 Pull Request 来添加新的学术图表风格！
+
+如果你想为本项目提出 Pull Request，可以参照 [贡献指南](CONTRIBUTING.md)
 
 ## 📄 License
 
