@@ -1,0 +1,25 @@
+# 字体设置
+font.family : sans-serif
+font.sans-serif : Arial, Helvetica, DejaVu Sans
+font.weight : bold
+
+# 坐标轴线宽和边框隐藏
+axes.linewidth: 0.8     
+axes.edgecolor: black   
+axes.spines.top: True   
+axes.spines.bottom: True
+axes.spines.left: True  
+axes.spines.right: True 
+
+# 刻度线粗细与长度
+xtick.major.width : 1.5
+xtick.major.size : 6
+
+# 隐藏 y 轴刻度线
+ytick.labelleft: False
+ytick.left: False
+
+# 字体大小
+xtick.labelsize : 16
+axes.labelsize : 16
+axes.titlesize : 16
