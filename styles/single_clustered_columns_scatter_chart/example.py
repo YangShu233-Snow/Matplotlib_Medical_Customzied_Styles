@@ -45,7 +45,7 @@ def generate_prism_colors(num_groups):
     if num_groups == 1:
         return ['black']
 
-    grays = np.linspace(0, 0.8, num_groups)
+    grays = np.linspace(0.1, 0.8, num_groups)
     return [str(g) for g in grays]
 
 
@@ -164,7 +164,8 @@ def main():
         raw_data = all_raw_data[index]
 
         n_subgroups = len(category[1])
-        bar_width = total_width / n_subgroups
+        bar_width = 0.3
+        total_width = n_subgroups * bar_width
 
         offsets = np.linspace(
             -total_width / 2 + bar_width / 2, 
@@ -181,17 +182,16 @@ def main():
 
             asymmetric_errs = [errs[i]]
             ax.bar(x_current, means[i], yerr=asymmetric_errs, width=bar_width,
-               label=category[1][i], color=colors[i], edgecolor='black', linewidth=1.5, alpha=0.8,
+               label=category[1][i], color=colors[i], edgecolor='black', linewidth=1.5,
                capsize=5, error_kw={'elinewidth': 1.2, 'capthick': 1.2})
 
         for i, data in enumerate(raw_data):
-            x_jittered = generate_jittered_x(data, r_x=len(categories) / fig_width * r / 72, r_y= np.max(all_means) / fig_heigth * r / 72) + all_x_positions[i]
+            x_jittered = generate_jittered_x(data, r_x=len(categories) / fig_width * r / 72, r_y= np.max(all_means) / fig_heigth * r / 36) + all_x_positions[i]
             ax.scatter(x_jittered, data, 
                     color='white',     
                     edgecolor='black', 
-                    alpha=0.75,        
-                    s=np.pi * r ** 2,              
-                    zorder=3)
+                    alpha=0.75,
+                    s=np.pi * r ** 2)
 
         stars_mark = stars_marks[index]
         stars_indexes = [star_mark[0] for star_mark in stars_mark]

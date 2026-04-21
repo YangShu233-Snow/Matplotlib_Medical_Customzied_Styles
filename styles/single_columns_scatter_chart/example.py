@@ -43,7 +43,7 @@ def generate_prism_colors(num_groups):
     if num_groups == 1:
         return ['black']
 
-    grays = np.linspace(0, 0.8, num_groups)
+    grays = np.linspace(0.1, 0.8, num_groups)
     return [str(g) for g in grays]
 
 def generate_jittered_x(y: np.ndarray, r_x: float, r_y: float) -> np.ndarray:
@@ -139,6 +139,8 @@ def main():
     stars_mark = [
         (1, 3)
     ]
+
+    r = 2
     
     # 根据原始数据计算均值和标准误 (SEM)
     means = [np.mean(d) for d in raw_data]
@@ -148,25 +150,25 @@ def main():
     asymmetric_errs = [errs] 
 
     # 具体图像尺寸大小按需求设置
-    fig, ax = plt.subplots(figsize=(len(groups) * 2.0, 5), dpi=300)
+    fig_width = len(raw_data) * 0.3 + 2.5
+    fig_heigth = 1.5 + np.max(means) / np.min(means)
+    fig, ax = plt.subplots(figsize=(fig_width, fig_heigth), dpi=300)
 
     colors = generate_prism_colors(len(groups))
 
     # 1. 绘制柱状图底色 (设置透明度以便看清散点)
     ax.bar(x_pos, means, yerr=asymmetric_errs, width=0.6,
-            color=colors, edgecolor='black', linewidth=2, alpha=0.7,
+            color=colors, edgecolor='black', linewidth=2,
             capsize=5, error_kw={'elinewidth': 1.5, 'capthick': 1.5, 'zorder': 4})
     
     # 2. 绘制分布散点 (Scatter/Jitter)
-    
     for i, data in enumerate(raw_data):
-        x_jittered = generate_jittered_x(data, r_x=0.03, r_y=80) + x_pos[i]
+        x_jittered = generate_jittered_x(data, r_x=len(groups) / fig_width * r / 72, r_y= np.max(means) / fig_heigth * r / 36) + x_pos[i]
         ax.scatter(x_jittered, data, 
-                   color='white',            # 散点内部填充白色
-                   edgecolor='black',        # 散点黑色描边
-                   alpha=1.0,                # 散点透明度
-                   s=20,                     # 散点大小
-                   zorder=3)                 # 确保散点图层在柱子上方
+                   color='white',    
+                   edgecolor='black',
+                   alpha=0.7,        
+                   s=np.pi * r ** 2)         
 
     # 3. 绘制显著性星号，传入原始数据以计算最高点
     stars_indexes = [star_mark[0] for star_mark in stars_mark]
