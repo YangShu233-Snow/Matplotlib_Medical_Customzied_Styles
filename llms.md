@@ -13,3 +13,9 @@ This repository is a collection of matplotlib styles that mimic GraphPad Prism.
 2. **Path Resolution:** Always use `pathlib.Path` for file paths (e.g., `Path(__file__).parent`) to ensure cross-platform compatibility. Do not use hardcoded string paths.
 3. **GraphPad Logic:** GraphPad styles typically require inward-facing ticks, removed top and right spines, and bold axis labels. Rely on the `.mplstyle` files for this rather than writing redundant matplotlib code.
 4. **Error Bars:** For biological data, asymmetric error bars (upper only) are preferred.
+
+## Contributing Guideline
+
+This repository has `CONTRIBUTING.md`. If you need to know how to make pull requests for this repo, you must read it and follow the rules in this markdown file.
+
+If your user ask it to you, you should explain `CONTRIBUTING.md` to him/her.
