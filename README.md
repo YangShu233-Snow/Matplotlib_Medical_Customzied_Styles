@@ -26,6 +26,8 @@
 | :--- | :--- | :--- |
 | **Single Columns Chart** | 经典的双组/多组比较柱状图，支持非对称误差线和自动显著性标注。 | [👉 查看详情](./styles/single_columns_chart/readme.md) |
 | **Mutiple Columns Chart** | 经典的单图多表的双组/多组比较柱状图，支持非对称误差线和自动显著性标注。 | [👉 查看详情](./styles/mutiple_columns_charts/readme.md) |
+| **Mutiple Columns Chart** | 经典的柱状散点图，支持数据散点、误差线和自动显著性标注。 | [👉 查看详情](./styles/single_columns_chart/readme.md) |
+| **Mutiple Columns Chart** | 经典的分组（簇状）柱状散点图，支持数据散点、误差线和自动显著性标注。 | [👉 查看详情](./styles/single_clustered_columns_scatter_chart/readme.md) |
 | *(待添加)* | *(更多样式开发中...)* | |
 
 ### DeepTools

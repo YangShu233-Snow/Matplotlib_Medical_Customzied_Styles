@@ -98,9 +98,8 @@ def main():
     save_dir.mkdir(parents=True, exist_ok=True)
     save_paths = [save_dir / f"{img_name}.png", save_dir / f"{img_name}.pdf"]
     
-    plt.tight_layout()
     for save_path in save_paths:
-        plt.savefig(save_path)
+        plt.savefig(save_path, bbox_inches='tight')
     # plt.show()
 
 if __name__ == '__main__':
