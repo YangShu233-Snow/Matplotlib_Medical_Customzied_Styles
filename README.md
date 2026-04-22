@@ -6,7 +6,7 @@
 
 ## 🤖 AI friendly
 
-本仓库对 AI 友好，如果你是 Agent 用户，或你的 AI 支持从链接读取本仓库内容，可以放心将仓库交给它解读，作者已尽可能在 `llms.md` 中描述清楚本项目的结构了。
+本仓库对 AI 友好，如果你是 Agent 用户，或你的 AI 支持从链接读取本仓库内容，可以放心将仓库交给它解读，作者已尽可能在 [GEMINI.md](./GEMINI.md) 中描述清楚本项目的结构了。
 
 ## 🎯 为什么要有这个仓库？
 
@@ -26,8 +26,9 @@
 | :--- | :--- | :--- |
 | **Single Columns Chart** | 经典的双组/多组比较柱状图，支持非对称误差线和自动显著性标注。 | [👉 查看详情](./styles/single_columns_chart/readme.md) |
 | **Mutiple Columns Chart** | 经典的单图多表的双组/多组比较柱状图，支持非对称误差线和自动显著性标注。 | [👉 查看详情](./styles/mutiple_columns_charts/readme.md) |
-| **Single Columns Scatter Chart** | 经典的柱状散点图，支持数据散点、误差线和自动显著性标注。 | [👉 查看详情](./styles/single_columns_chart/readme.md) |
+| **Single Columns Scatter Chart** | 经典的柱状散点图，支持数据散点、误差线和自动显著性标注。 | [👉 查看详情](./styles/single_columns_scatter_chart/readme.md) |
 | **Single Clustered Columns Scatter Chart** | 经典的分组（簇状）柱状散点图，支持数据散点、误差线和自动显著性标注。 | [👉 查看详情](./styles/single_clustered_columns_scatter_chart/readme.md) |
+| **Clustered Scatter Chart** | 经典的聚类散点图，集成 DBSCAN 算法并支持自动参数估计。 | [👉 查看详情](./styles/clustered_scatter_chart/readme.md) |
 | *(待添加)* | *(更多样式开发中...)* | |
 
 ### DeepTools
