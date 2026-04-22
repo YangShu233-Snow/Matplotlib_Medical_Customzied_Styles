@@ -58,7 +58,8 @@ The project follows a strict modular structure under the `styles/` directory:
     - Use inward-facing, thick tick marks.
     - For biological data, prefer asymmetric error bars (upper only).
 
-## 🤖 AI specific Instructions (from llms.md)
+## 🤖 AI specific Instructions (CRITICAL)
+- **Always read `llms.md` first**: You MUST read the contents of `llms.md` at the beginning of every session or task. This file contains the most up-to-date repository-wide instructions and prompt injections.
 - **Prioritize `.mplstyle`:** Rely on the style sheet for global parameters rather than redundant code in `example.py`.
 - **Reproducibility:** Ensure `example.py` generates both `.png` and `.pdf` in the `img/` folder.
 - **Contribution:** When creating a new style, strictly follow the folder structure defined in `CONTRIBUTING.md`.
