@@ -1,0 +1,35 @@
+font.family         : sans-serif
+font.sans-serif     : Arial, Helvetica, DejaVu Sans, sans-serif
+
+axes.spines.top     : False
+axes.spines.bottom  : False
+axes.spines.left    : False
+axes.spines.right   : False
+
+lines.linewidth      : 0.5
+
+xtick.bottom        : False    # 隐藏X轴底部刻度线
+xtick.top           : False    # 隐藏X轴顶部刻度线
+ytick.left          : False    # 隐藏Y轴左侧刻度线
+ytick.right         : False    # 隐藏Y轴右侧刻度线
+
+xtick.labelsize     : 4        # X轴标签（如样本名）字号，通常较多，字号设小一点
+ytick.labelsize     : 4        # Y轴标签（如基因名）字号
+axes.labelsize      : 6        # 坐标轴总体标题字号
+axes.titlesize      : 12       # 子图标题字号，稍微加粗加大
+axes.linewidth      : 0.0      # 线宽 
+
+axes.xmargin        : 0        # X轴数据范围外不留白
+axes.ymargin        : 0        # Y轴数据范围外不留白
+figure.facecolor    : white    # 确保画板背景为纯白（防止在暗色模式IDE中透明背景发黑）
+axes.facecolor      : white    # 坐标系背景纯白
+
+image.cmap          : RdBu_r   # 默认映射：红(高) - 白(中) - 蓝(低)
+
+legend.frameon      : False    # 去除图例外层边框
+legend.fontsize     : 9        # 图例文字大小
+
+figure.dpi          : 300      # 默认DPI为300
+savefig.dpi         : 300      # 保存图片时DPI为300
+savefig.bbox        : tight    # 保存时自动裁剪多余的边缘留白
+savefig.pad_inches  : 0.1      # 裁剪后保留 0.1 英寸的安全边距

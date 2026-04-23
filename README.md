@@ -19,7 +19,6 @@
    </p>
 </div>
 
-
 本项目旨在通过 Python 的 `matplotlib` 库，复刻包含 **GraphPad Prism** 简约风格在内的学术图表样式。无需手动调整繁琐的格式，只需引入相应的 `.mplstyle` 样式文件，即可一键生成符合高质量期刊出版要求的精美图表。
 
 ## 🤖 AI friendly
@@ -54,6 +53,7 @@
 | 样式名称 | 描述 | 快速查看 |
 | :--- | :--- | :--- |
 | **Mutiple Genomic Heatmaps** | 单图多表基因组学聚合热图，带有标尺与色彩条图例。 | [👉 查看详情](./styles/mutiple_genomic_heatmaps/readme.md) |
+| **Clustered Genomic Heatmap** | 经典的带聚类树基因组学热图，支持行列聚类。 | [👉 查看详情](./styles/clustered_genomic_heatmap/readme.md) |
 | *(待添加)* | *(更多样式开发中...)* | |
 
 ## 🛠️ 快速上手
