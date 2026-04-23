@@ -16,6 +16,15 @@
       <a href="https://github.com/YangShu233-Snow/Matplotlib_Medial_Customed_Styles/pulls">
          <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="pull requests">
       </a>
+      <a href="./LICENSE">
+         <img src="https://img.shields.io/github/license/YangShu233-Snow/Matplotlib_Medial_Customed_Styles" alt="License">
+      </a>
+      <a href="https://github.com/YangShu233-Snow/Matplotlib_Medial_Customed_Styles/commits/main">
+         <img src="https://img.shields.io/github/last-commit/YangShu233-Snow/Matplotlib_Medial_Customed_Styles" alt="Last Commit">
+      </a>
+      <a href="./llms.md">
+         <img src="https://img.shields.io/badge/AI-Friendly-brightgreen" alt="AI Friendly">
+      </a>
    </p>
 </div>
 
