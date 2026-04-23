@@ -239,6 +239,7 @@ def main():
     # --- 格式化设置 ---
     ax.set_xticks(x_base)
     ax.set_xlim(left=0)
+    ax.set_ylim(bottom=0)
     ax.set_xticklabels([])
     
     ax.set_xticks(all_bar_positions, minor=True)
