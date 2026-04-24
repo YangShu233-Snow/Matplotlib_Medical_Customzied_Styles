@@ -1,0 +1,43 @@
+# 字体设置
+font.family : sans-serif
+font.sans-serif : Arial, Helvetica, DejaVu Sans
+
+# 坐标轴和标题字体粗细
+axes.labelweight : bold
+axes.titleweight : bold
+
+# 坐标轴线宽和边框隐藏
+axes.linewidth : 1.5
+axes.spines.top : False
+axes.spines.right : False
+
+# 刻度线粗细与长度
+xtick.major.width : 1.5
+ytick.major.width : 1.5
+xtick.major.size : 6
+ytick.major.size : 6
+
+# 字体大小
+xtick.labelsize : 10
+ytick.labelsize : 10
+axes.labelsize : 14
+axes.titlesize : 16
+
+# 箱型样式
+boxplot.patchartist: True
+boxplot.boxprops.color: black
+boxplot.boxprops.linewidth: 1.5
+
+# 箱型均值样式
+boxplot.showmeans: True          
+boxplot.meanline: True           
+boxplot.meanprops.color: red     
+boxplot.meanprops.linestyle: --  
+boxplot.meanprops.linewidth: 1.0 
+
+# 箱型点样式
+boxplot.flierprops.marker: o
+boxplot.flierprops.markersize: 4.0
+boxplot.flierprops.markerfacecolor: CCCCCC
+boxplot.flierprops.markeredgecolor: black
+boxplot.flierprops.markeredgewidth: 0.5
