@@ -57,6 +57,7 @@
 | **Clustered Scatter Chart** | 经典的聚类散点图，集成 DBSCAN 算法并支持自动参数估计。 | [👉 查看详情](./styles/clustered_scatter_chart/readme.md) |
 | **Single Linear Regression Scatter Chart** | 经典的单组线性回归散点图，包含线性拟合直线及 $R^2$、$P$ 值等统计信息。 | [👉 查看详情](./styles/single_linear_regression_scatter_chart/readme.md) |
 | **Single Boxplot Chart** | 经典的简约箱线图，支持同时展示中位数与均值线。 | [👉 查看详情](./styles/single_boxplot_chart/readme.md) |
+| **Single Violinplot Chart** | 经典的小提琴图，支持 Scott MISE 带宽优化，包含标准分布与对比分离（Split）两种模式。 | [👉 查看详情](./styles/single_volinplot_chart/readme.md) |
 | *(待添加)* | *(更多样式开发中...)* | |
 
 ### DeepTools
