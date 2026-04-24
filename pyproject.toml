@@ -8,14 +8,13 @@ version = "0.1.0"
 description = "A collection of custom matplotlib styles specifically designed for the medical and biological sciences."
 readme = "README.md"
 requires-python = ">=3.9"
-license = {text = "MIT"}
+license = "MIT"
 authors = [
     {name = "YangShu233-Snow"}
 ]
 keywords = ["matplotlib", "graphpad", "scientific-plotting", "medical-science"]
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Topic :: Scientific/Engineering :: Visualization",
 ]
@@ -36,6 +35,9 @@ dependencies = [
 dev = [
     "pytest>=8.0.0",
 ]
+
+[tool.setuptools]
+packages = ["styles"]
 
 [tool.pytest.ini_options]
 testpaths = ["test"]
