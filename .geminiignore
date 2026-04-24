@@ -1,6 +1,0 @@
-# .cursorignore 或 .aiignore
-*.jpg
-*.jpeg
-*.pdf
-.git/
-__pycache__/

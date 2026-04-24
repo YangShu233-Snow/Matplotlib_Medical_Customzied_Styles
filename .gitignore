@@ -1,2 +1,6 @@
 .git/
 __pycache__/
+
+# Agent Files
+GEMINI.md
+.geminiignore
