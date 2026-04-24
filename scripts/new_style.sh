@@ -44,7 +44,16 @@ style_file = root_path / './assets/$FOLDER_NAME.mplstyle'
 plt.style.use(style_file)
 
 def main():
-    pass
+    # --- config ---
+    img_name = 'example'
+
+    save_dir = root_path / Path('./img')
+    save_dir.mkdir(parents=True, exist_ok=True)
+    save_paths = [save_dir / f"{img_name}.png", save_dir / f"{img_name}.pdf"]
+
+    plt.tight_layout()
+    for save_path in save_paths:
+        plt.savefig(save_path, bbox_inches='tight')
 
 if __name__ == '__main__':
     main()
