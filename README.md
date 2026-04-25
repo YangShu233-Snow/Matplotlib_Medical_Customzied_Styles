@@ -2,27 +2,27 @@
    
 <img src='./assets/MMCS_LOGO.png' width=250>
 
-# Matplotlib_Medial_Customed_Styles
+# Matplotlib_Medical_Customed_Styles
 
 🔬 **Reusable · Instant · Professional · Evolving** 🔬   
 </div>
 
 <div>
    <p align="center">
-      <a href="https://github.com/YangShu233-Snow/Matplotlib_Medial_Customed_Styles/actions/workflows/pytest.yaml">
-         <img src="https://github.com/YangShu233-Snow/Matplotlib_Medial_Customed_Styles/actions/workflows/pytest.yaml/badge.svg" alt="pytest">
+      <a href="https://github.com/YangShu233-Snow/Matplotlib_Medical_Customed_Styles/actions/workflows/pytest.yaml">
+         <img src="https://github.com/YangShu233-Snow/Matplotlib_Medical_Customed_Styles/actions/workflows/pytest.yaml/badge.svg" alt="pytest">
       </a>
       <a href="https://matplotlib.org/">
          <img src="https://img.shields.io/badge/style-Matplotlib-blue?logo=python" alt="Matiplotlib">
       </a>
-      <a href="https://github.com/YangShu233-Snow/Matplotlib_Medial_Customed_Styles/pulls">
+      <a href="https://github.com/YangShu233-Snow/Matplotlib_Medical_Customed_Styles/pulls">
          <img src="https://img.shields.io/badge/PRs-welcome-orange.svg" alt="pull requests">
       </a>
       <a href="./LICENSE">
-         <img src="https://img.shields.io/github/license/YangShu233-Snow/Matplotlib_Medial_Customed_Styles" alt="License">
+         <img src="https://img.shields.io/github/license/YangShu233-Snow/Matplotlib_Medical_Customed_Styles" alt="License">
       </a>
-      <a href="https://github.com/YangShu233-Snow/Matplotlib_Medial_Customed_Styles/commits/main">
-         <img src="https://img.shields.io/github/last-commit/YangShu233-Snow/Matplotlib_Medial_Customed_Styles" alt="Last Commit">
+      <a href="https://github.com/YangShu233-Snow/Matplotlib_Medical_Customed_Styles/commits/main">
+         <img src="https://img.shields.io/github/last-commit/YangShu233-Snow/Matplotlib_Medical_Customed_Styles" alt="Last Commit">
       </a>
       <a href="./llms.md">
          <img src="https://img.shields.io/badge/AI-Friendly-darkgreen" alt="AI Friendly">
@@ -75,8 +75,8 @@
 
 1. 克隆本仓库到本地：
    ```bash
-   git clone https://github.com/YangShu233-Snow/Matplotlib_Medial_Customed_Styles
-   cd Matplotlib_Medial_Customed_Styles
+   git clone https://github.com/YangShu233-Snow/Matplotlib_Medical_Customed_Styles
+   cd Matplotlib_Medical_Customed_Styles
    ```
 2. 安装环境
    ```bash

@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "matplotlib-medial-customed-styles"
+name = "matplotlib-medical-customed-styles"
 version = "0.1.0"
 description = "A collection of custom matplotlib styles specifically designed for the medical and biological sciences."
 readme = "README.md"
@@ -28,8 +28,8 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/YangShu233-Snow/Matplotlib_Medial_Customed_Styles"
-"Bug Tracker" = "https://github.com/YangShu233-Snow/Matplotlib_Medial_Customed_Styles/issues"
+"Homepage" = "https://github.com/YangShu233-Snow/Matplotlib_Medical_Customed_Styles"
+"Bug Tracker" = "https://github.com/YangShu233-Snow/Matplotlib_Medical_Customed_Styles/issues"
 
 [project.optional-dependencies]
 dev = [

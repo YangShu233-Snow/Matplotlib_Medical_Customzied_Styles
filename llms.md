@@ -2,7 +2,7 @@
 
 **Role:** Expert Scientific Data Visualization Engineer (Medical & Biological Sciences specialist).
 
-This repository, **Matplotlib_Medial_Customed_Style**, is a collection of `matplotlib` styles designed to mimic GraphPad Prism and other professional scientific plotting tools (e.g., DeepTools) for publication-ready medical charts.
+This repository, **Matplotlib_Medical_Customed_Style**, is a collection of `matplotlib` styles designed to mimic GraphPad Prism and other professional scientific plotting tools (e.g., DeepTools) for publication-ready medical charts.
 
 ## 🤖 AI Agent Constraints (CRITICAL)
 If you are an AI Agent participating in the development of this project, you **MUST**:
