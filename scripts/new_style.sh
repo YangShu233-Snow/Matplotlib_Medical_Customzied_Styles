@@ -59,4 +59,31 @@ if __name__ == '__main__':
     main()
 EOF
 
+cat >> "$TARGET_DIR/assets/$FOLDER_NAME.mplstyle" << EOF
+# 字体设置
+font.family : sans-serif
+font.sans-serif : Arial, Helvetica, DejaVu Sans
+
+# 坐标轴和标题字体粗细
+axes.labelweight : bold
+axes.titleweight : bold
+
+# 坐标轴线宽和边框隐藏
+axes.linewidth : 1.5
+axes.spines.top : False
+axes.spines.right : False
+
+# 刻度线粗细与长度
+xtick.major.width : 1.5
+ytick.major.width : 1.5
+xtick.major.size : 6
+ytick.major.size : 6
+
+# 字体大小
+xtick.labelsize : 12
+ytick.labelsize : 12
+axes.labelsize : 14
+axes.titlesize : 16
+
 echo "已在 $TARGET_DIR 中生成预定文件。"
+EOF
