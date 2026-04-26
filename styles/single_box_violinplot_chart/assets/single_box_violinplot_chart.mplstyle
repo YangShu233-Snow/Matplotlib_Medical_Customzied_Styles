@@ -44,4 +44,4 @@ boxplot.medianprops.color: black
 boxplot.medianprops.linewidth: 1.0
 
 # 颜色循环 (用于 split 模式: 蓝色和橙色)
-axes.prop_cycle: cycler('color', ['0072B2', 'D55E00'])
+axes.prop_cycle: cycler('color', ['52abdd', 'e59f00'])

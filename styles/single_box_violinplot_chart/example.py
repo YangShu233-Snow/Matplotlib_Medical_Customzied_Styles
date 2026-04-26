@@ -1,46 +1,82 @@
+from typing import Dict, List, Literal
+
+from matplotlib.axes import Axes
 import matplotlib.pyplot as plt
 import numpy as np
 
 from pathlib import Path
-from typing import List
-from matplotlib.axes import Axes
+from sklearn.neighbors import KernelDensity
+
+type KernelType = Literal['gaussian', 'tophat', 'epanechnikov', 'exponential', 'linear', 'cosine']
+type BandwidthAlgorithm = Literal['scott', 'silverman']
 
 root_path = Path(__file__).parent
-# 修改为要求的样式文件路径
-style_file = root_path / './assets/single_box_volinplot_chart.mplstyle'
+style_file = root_path / './assets/single_box_violinplot_chart.mplstyle'
 plt.style.use(style_file)
 
-def scott_MISE(data: List[np.ndarray]) -> float:
-    n_avg = np.mean([len(d) for d in data])
-    return float(n_avg ** (-1/5))
+def calculate_bandwidth(
+        data: np.ndarray,
+        method: BandwidthAlgorithm
+    ):
+    n = len(data)
+    sigma = np.std(data, ddof=1)
+    if method == 'scott':
+        return sigma * (n ** (-1/5))
+    elif method == 'silverman':
+        iqr = np.subtract(*np.percentile(data, [75, 25]))
+        A = min(sigma, iqr / 1.34)
+        return 0.9 * A * (n ** (-1/5))
+    else:
+        raise ValueError(f"Unknown bandwidth method: {method}")
 
-def draw_sample_sizes(ax: Axes, data: List[np.ndarray], x_positions: np.ndarray):
+def draw_sample_sizes(ax: Axes, data: List[np.ndarray], x_positions: np.ndarray, cut: float):
     """在每个图表上方标注样本量 n=xxx"""
-    y_range = ax.get_ylim()[1] - ax.get_ylim()[0]
-    offset = y_range * 0.02
+    offset = list(map(lambda x: np.std(x) * cut, data))
     for i, d in enumerate(data):
         n = len(d)
         top_val = np.max(d)
-        ax.text(x_positions[i], top_val + offset, f'n={n}', ha='center', va='bottom', fontsize=10)
+        ax.text(x_positions[i], top_val + offset[i], f'n={n}', ha='center', va='bottom', fontsize=10)
 
-def draw_box_violinplot(ax: Axes, data: List[np.ndarray], points: int, v_widths: float, b_widths: float):
+def draw_box_violinplot(
+        ax: Axes, data: List[np.ndarray], points: int, v_widths: float, b_widths: float,
+        cut: float = 1.5,
+        kernel: KernelType = 'gaussian',
+        bandwidth_algorithm: BandwidthAlgorithm = 'scott',
+    ):
     x_pos = np.arange(len(data))
-    bw_method = scott_MISE(data)
 
-    # 绘制背景的小提琴图
-    parts = ax.violinplot(
-        data, positions=x_pos, points=points, widths=v_widths, 
-        bw_method=bw_method, showextrema=False
-    )
-    
-    # 应用 rcParams 样式
-    for pc in parts['bodies']:
-        pc.set_facecolor(plt.rcParams['patch.facecolor'])
-        pc.set_edgecolor(plt.rcParams['patch.edgecolor'])
-        pc.set_linewidth(plt.rcParams['patch.linewidth'])
-        pc.set_alpha(1)
+    # 绘制背景的小提琴图 (手动 KDE)
+    for idx, group in enumerate(data):
+        bandwidth = calculate_bandwidth(group, bandwidth_algorithm)
 
-    # 绘制内部叠加的箱线图 (窄箱体，黑色填充)
+        kde = KernelDensity(
+            bandwidth=bandwidth,
+            kernel=kernel
+        ).fit(group.reshape(-1, 1))
+
+        group_max, group_min = group.max(), group.min()
+        group_std = np.std(group)
+        extend = group_std * cut
+        y_grid = np.linspace(
+            group_min - extend,
+            group_max + extend,
+            points
+        )
+
+        density = np.exp(kde.score_samples(y_grid.reshape(-1, 1)))
+        standard_density = (density / density.max()) * (v_widths / 2)
+
+        pos = x_pos[idx]
+        ax.fill_betweenx(
+            y_grid,
+            pos - standard_density,
+            pos + standard_density,
+            color=plt.rcParams['patch.facecolor'],
+            edgecolor=plt.rcParams['patch.edgecolor'],
+            linewidth=plt.rcParams['patch.linewidth']
+        )
+
+    # 绘制内部叠加的箱线图 (窄箱体)
     ax.boxplot(
         data, positions=x_pos, widths=b_widths, showfliers=False,
         patch_artist=plt.rcParams['boxplot.patchartist'],
@@ -52,13 +88,15 @@ def main():
     title = 'Box-Violin Plot'
     ylabel = 'Value'
     img_name = 'example'
-    
-    points = 60
-    v_widths = 0.7  # 小提琴图宽度
-    b_widths = 0.1  # 内部箱线图宽度
-    show_n = True   # 是否展示样本量
 
-    # 模拟数据
+    points = 60
+    v_widths = 0.7
+    b_widths = 0.1
+    show_n = True
+    kernel: KernelType = 'gaussian'
+    bandwidth_algorithm: BandwidthAlgorithm = 'scott'
+    cut = 1.5
+
     np.random.seed(12)
     data = [
         np.random.normal(200, 80, 200),
@@ -68,11 +106,16 @@ def main():
 
     fig, ax = plt.subplots(figsize=(5, 5))
 
-    draw_box_violinplot(ax, data, points, v_widths, b_widths)
-    
+    draw_box_violinplot(
+        ax, data, points, v_widths, b_widths,
+        cut=cut,
+        kernel=kernel,
+        bandwidth_algorithm=bandwidth_algorithm
+    )
+
     x_positions = np.arange(len(data))
     if show_n:
-        draw_sample_sizes(ax, data, x_positions)
+        draw_sample_sizes(ax, data, x_positions, cut)
 
     ax.set_title(title)
     ax.set_ylabel(ylabel)

@@ -22,6 +22,9 @@
 *   **统计信息全覆盖**：外部轮廓展示密度，内部黑盒展示 25%/50%/75% 分位数，胡须展示 1.5x IQR 范围。
 *   **样本量标注**：内置 `draw_sample_sizes` 函数，默认在标准模式顶部标注 $n=xxx$。
 *   **自动对齐算法**：在分离模式中，内置偏移量逻辑，确保两侧的箱线图精确贴合半边小提琴的几何中心。
+*   **Sklearn KDE 重写**：使用 `sklearn.neighbors.KernelDensity` 手动计算核密度，支持多种核函数（gaussian、tophat、epanechnikov 等）。
+*   **智能带宽选择**：支持 Scott 和 Silverman 两种带宽估计算法，通过 `bandwidth_algorithm` 参数切换。
+*   **尾部延长控制**：`cut` 参数灵活控制密度估计的尾部延伸范围，避免截断分布特征。
 
 ## 🚀 快速运行
 
@@ -47,9 +50,12 @@ python example_split.py
 title = 'Box-Violin Plot'
 ylabel = 'Value'
 
-v_widths = 0.7  # 小提琴图的宽度
-b_widths = 0.1  # 内部箱体的宽度（建议设置得比较窄）
-show_n = True   # 是否展示样本量 n=xxx
+v_widths = 0.7          # 小提琴图的宽度
+b_widths = 0.1          # 内部箱体的宽度（建议设置得比较窄）
+show_n = True           # 是否展示样本量 n=xxx
+kernel = 'gaussian'     # 核函数: gaussian, tophat, epanechnikov 等
+bandwidth_algorithm = 'scott'  # scott 或 silverman
+cut = 1.5               # 尾部延长倍数
 
 # --- 模拟数据 ---
 data = [
@@ -62,6 +68,11 @@ data = [
 分离模式要求数据为成对的列表：
 
 ```python
+# --- config ---
+kernel = 'gaussian'     # 核函数: gaussian, tophat, epanechnikov 等
+bandwidth_algorithm = 'scott'  # scott 或 silverman
+cut = 1.5               # 尾部延长倍数
+
 # 每个元素包含 [组1数据, 组2数据]
 data = [
     [np.random.normal(200, 50, 100), np.random.normal(250, 60, 100)],
