@@ -18,12 +18,14 @@
 
 ## ✨ 核心特性
 
-*   **GraphPad 审美预设**：通过 `assets/single_volinplot_chart.mplstyle` 全局定义了加粗的坐标轴、向内的刻度线以及符合学术规范的字体设置。
+*   **GraphPad 审美预设**：通过 `assets/single_violinplot_chart.mplstyle` 全局定义了加粗的坐标轴、向内的刻度线以及符合学术规范的字体设置。
 *   **双重变体支持**：
     *   `example.py`: 快速生成经典的单色小提琴图。
     *   `example_split.py`: 生成基于颜色循环（蓝色与橙色对比）的分离式小提琴图，并自动生成图例。
 *   **样本量自动标注**：内置 `draw_sample_sizes` 函数，可自动在每个小提琴最上方标注样本数量（标准模式为 $n=xxx$，分离模式为 $n=x/y$）。
-*   **优化核密度估计 (KDE)**：内置 Scott MISE 算法优化带宽选择，使小提琴图在不同数据量下都能呈现出平滑且真实的轮廓。
+*   **Sklearn KDE 重写**：弃用 Matplotlib 内置 violinplot，改用 `sklearn.neighbors.KernelDensity` 手动计算密度，精度更高且支持多种核函数（gaussian、tophat、epanechnikov 等）。
+*   **智能带宽选择**：支持 Scott 和 Silverman 两种带宽估计算法，可根据数据分布自动调整核密度平滑程度。
+*   **尾部延长控制**：`cut` 参数灵活控制密度估计的尾部延伸范围，避免截断分布特征。
 *   **移除冗余元素**：默认隐藏了箱体中心线和末端横线，仅保留轮廓（可根据需要开启），使图表视觉焦点更加集中。
 
 ## 🚀 快速运行
@@ -47,6 +49,9 @@ python example_split.py
 ```python
 # --- config ---
 show_n = True  # 是否展示样本量 n=xxx
+kernel: KernelType = 'gaussian'       # 核函数: gaussian, tophat, epanechnikov 等
+bandwidth_algorithm: BandwidthAlgorithm = 'scott'  # scott 或 silverman
+cut = 1.5  # 尾部延长倍数
 
 # --- data ---
 data = [
@@ -61,6 +66,9 @@ data = [
 ```python
 # --- config ---
 show_n = True  # 是否展示样本量 n=x/y
+kernel: KernelType = 'gaussian'       # 核函数: gaussian, tophat, epanechnikov 等
+bandwidth_algorithm: BandwidthAlgorithm = 'scott'  # scott 或 silverman
+cut = 1.5  # 尾部延长倍数
 
 # 每个元素代表一个样本点，包含 [组1数据, 组2数据]
 data = [

@@ -1,59 +1,94 @@
-from typing import Dict, List
+from typing import Dict, List, Literal
 
 from matplotlib.axes import Axes
 import matplotlib.pyplot as plt
 import numpy as np
 
 from pathlib import Path
+from sklearn.neighbors import KernelDensity
+
+type KernelType = Literal['gaussian', 'tophat', 'epanechnikov', 'exponential', 'linear', 'cosine']
+type BandwidthAlgorithm = Literal['scott', 'silverman']
 
 root_path = Path(__file__).parent
 # 修改为要求的样式文件路径
-style_file = root_path / './assets/single_volinplot_chart.mplstyle'
+style_file = root_path / './assets/single_violinplot_chart.mplstyle'
 plt.style.use(style_file)
 
-def scott_MISE(
-        data: List[np.ndarray]
-    )->float:
-    n_avg = np.mean(data)
-    return float(n_avg ** (-1/5))
+def calculate_bandwidth(
+        data: np.ndarray,
+        method: BandwidthAlgorithm
+    ):
+    n = len(data)
+    sigma = np.std(data, ddof=1)
+    if method == 'scott':
+        return sigma * (n ** (-1/5))
+    elif method == 'silverman':
+        # 使用 IQR 以提升鲁棒性
+        iqr = np.subtract(*np.percentile(data, [75, 25]))
+        # 取 sigma 和 iqr/1.34 中的较小值
+        A = min(sigma, iqr / 1.34)
+        return 0.9 * A * (n ** (-1/5))
+    else:
+        raise ValueError(f"Unknown bandwidth method: {method}")
 
 def draw_violinplot(
         ax: Axes, 
         data: List[np.ndarray], 
         points: int, 
-        widths: float
+        widths: float,
+        cut: float = 1.5,
+        kernel: KernelType = 'gaussian',
+        bandwidth_algorithm: BandwidthAlgorithm = 'scott',
     ):
 
     x_pos = np.arange(len(data))
-    bw_method = scott_MISE(data)
 
-    parts = ax.violinplot(
-        data,
-        x_pos,
-        points=points,
-        widths=widths,
-        bw_method=bw_method,
-        showextrema=False
-    )
+    for idx, group in enumerate(data):
+        # calculate bandwidth
+        bandwidth = calculate_bandwidth(group, bandwidth_algorithm)
 
-    # 从 rcParams 中读取样式并应用
-    for pc in parts['bodies']:
-        pc.set_facecolor(plt.rcParams['patch.facecolor'])
-        pc.set_edgecolor(plt.rcParams['patch.edgecolor'])
-        pc.set_linewidth(plt.rcParams['patch.linewidth'])
-        pc.set_alpha(1)  # 移除默认透明度以匹配 GraphPad 风格
+        # calculate KDE
+        kde = KernelDensity(
+            bandwidth=bandwidth,
+            kernel=kernel
+        ).fit(group.reshape(-1, 1))
 
-def draw_sample_sizes(ax: Axes, data: List[np.ndarray], x_positions: np.ndarray):
+        # extend tail
+        group_max, group_min = group.max(), group.min()
+        group_std = np.std(group)
+        extend = group_std * cut
+        y_grid = np.linspace(
+            group_min - extend,
+            group_max + extend,
+            points
+        )
+
+        # estimate density
+        density = np.exp(kde.score_samples(y_grid.reshape(-1, 1)))
+        standard_density = (density / density.max()) * (widths / 2)
+
+        pos = x_pos[idx]
+
+        ax.fill_betweenx(
+            y_grid,
+            pos - standard_density,
+            pos + standard_density,
+            color=plt.rcParams['patch.facecolor'],
+            edgecolor=plt.rcParams['patch.edgecolor'],
+            linewidth=plt.rcParams['patch.linewidth']
+        )
+
+def draw_sample_sizes(ax: Axes, data: List[np.ndarray], x_positions: np.ndarray, cut: float):
     """在每个小提琴上方标注样本量 n=xxx"""
-    y_range = ax.get_ylim()[1] - ax.get_ylim()[0]
-    offset = y_range * 0.02
-    
+    offset = list(map(lambda x: np.std(x) * cut , data))
+
     for i, d in enumerate(data):
         n = len(d)
         top_val = np.max(d)
         ax.text(
             x_positions[i], 
-            top_val + offset, 
+            top_val + offset[i], 
             f'n={n}', 
             ha='center', 
             va='bottom',
@@ -69,6 +104,9 @@ def main():
     points = 60
     widths = 0.7
     show_n = True  # 是否展示样本量
+    kernel: KernelType = 'gaussian'
+    bandwidth_algorithm: BandwidthAlgorithm = 'scott'
+    cut = 1.5
 
     np.random.seed(12)
     data = [
@@ -83,7 +121,10 @@ def main():
     )
 
     draw_violinplot(
-        ax, data, points, widths
+        ax, data, points, widths,
+        cut=cut,
+        kernel=kernel,
+        bandwidth_algorithm=bandwidth_algorithm
     )
 
     # 应用配置中的标签和标题
@@ -94,7 +135,7 @@ def main():
     ax.set_xticklabels([f'Sample {i+1}' for i in range(len(data))])
 
     if show_n:
-        draw_sample_sizes(ax, data, x_positions)
+        draw_sample_sizes(ax, data, x_positions, cut)
 
     save_dir = root_path / Path('./img')
     save_dir.mkdir(parents=True, exist_ok=True)
