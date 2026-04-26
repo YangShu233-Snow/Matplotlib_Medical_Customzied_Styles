@@ -118,6 +118,26 @@
   </tr>
 </table>
 
+### R ggplot
+
+<table>
+  <tr>
+    <th>样式名称</th>
+    <th>描述</th>
+    <th>快速查看</th>
+  </tr>
+  <tr>
+    <td><b>Single Bubbleplot Chart</b></td>
+    <td>经典的气泡图，支持气泡大小与颜色双变量编码，内置 P 值刻度选项与智能 X 轴范围。</td>
+    <td nowrap><a href='./styles/single_bubbleplot_chart/readme.md'>👉 查看详情</a></td>
+  </tr>
+  <tr>
+    <td><i>(待添加)</i></td>
+    <td><i>(更多样式开发中...)</i></td>
+    <td></td>
+  </tr>
+</table>
+
 ### DeepTools
 
 <table>

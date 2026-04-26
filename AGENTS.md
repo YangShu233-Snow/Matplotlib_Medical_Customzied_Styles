@@ -45,10 +45,10 @@ fig, ax = plt.subplots()
 When a style is ready for release, execute these 6 steps in order:
 
 1. **Audit `example.py`** — move any hardcoded non-essential styles (colors, line widths, fonts) into the `.mplstyle` file.
-2. **Run tests** — `pytest` (use `conda run -n Matplotlib_Medial_Customed_Styles pytest` if using Conda).
-3. **Regenerate images** — run `python example.py` inside the style directory to produce fresh `.png` and `.pdf`.
-4. **Write/update the style's `readme.md`** — include preview image and usage summary.
-5. **Update main `README.md` Styles Gallery** — add the new style to the appropriate table.
+2. **Regenerate images** — run `python example.py` inside the style directory to produce fresh `.png` and `.pdf`.
+3. **Write/update the style's `readme.md`** — include preview image and usage summary.
+4. **Update main `README.md` Styles Gallery** — add the new style to the correct section.
+5. **Run all checks** — run `./scripts/check.sh` from the project root (this runs ruff, optional markdown linters, and pytest).
 6. **Commit** the changes.
 
 ## `.mplstyle` parsing gotchas
