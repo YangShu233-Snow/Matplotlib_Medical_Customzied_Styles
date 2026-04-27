@@ -10,7 +10,7 @@
 
 *   **智能带宽校正**：内置 `calculate_bandwidth` 函数，内置 Scott 和 Silverman 规则。
 *   **GraphPad 审美预设**：通过 `assets/single_densityplot_chart.mplstyle` 全局定义了加粗的坐标轴、无边框图例以及符合学术规范的 4 色配色循环。
-*   **轮廓与填充结合**：代码演示了如何同时使用 `ax.plot` (轮廓线) 与 `ax.fill_between` (半透明填充) 来增强视觉对比。
+*   **轮廓与填充结合**：代码演示了如何同时使用 `ax.plot` (轮廓线) 与 `ax.fill_between` (半透明填充) 来增强视觉对比。可通过 `filled_with_color: bool = True` 控制是否启用填充。
 *   **自动收口优化**：绘图逻辑会自动在数据极值两侧预留 40% 的余量，确保密度曲线能够自然、平滑地降至零点。
 
 ## 🚀 快速运行
@@ -41,4 +41,7 @@ all_data = [
 
 # 3. 选择平滑算法
 bandwidth_algorithm = 'scott' # 或 'silverman'
+
+# 4. (可选) 关闭曲线下方填充
+filled_with_color = False
 ```

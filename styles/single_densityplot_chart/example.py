@@ -35,6 +35,8 @@ def main():
     title = 'Title'
     img_name = 'example'
 
+    filled_with_color: bool = True
+
     kernel: KernelType = 'gaussian'
     bandwidth_algorithm: BandwidthAlgorithm = 'scott'
 
@@ -72,10 +74,9 @@ def main():
     fig, ax = plt.subplots(figsize=(5, 5))
 
     for x_pos, density, label in zip(all_x_pos, all_density, labels):
-        # 绘制轮廓线 (线宽已由 mplstyle 控制)
         line, = ax.plot(x_pos, density, label=label)
-        # 绘制半透明填充区域
-        ax.fill_between(x_pos, density, alpha=0.3, color=line.get_color())
+        if filled_with_color:
+            ax.fill_between(x_pos, density, alpha=0.3, color=line.get_color())
 
     ax.set_ylabel(ylabel)
     ax.set_xlabel(xlabel)
