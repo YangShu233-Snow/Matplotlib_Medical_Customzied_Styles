@@ -1,0 +1,5 @@
+font.weight : normal
+patch.facecolor: CCCCCC
+patch.edgecolor: CCCCCC
+patch.linewidth: 1.5
+axes.prop_cycle: cycler('color', ['CCCCCC'])

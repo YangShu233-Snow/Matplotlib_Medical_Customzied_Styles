@@ -1,0 +1,6 @@
+axes.titlepad : 10
+xtick.labelsize : 10
+ytick.labelsize : 10
+patch.facecolor: AAAAAA
+patch.linewidth: 0.0
+axes.prop_cycle: cycler('color', ['52abdd', 'e59f00'])

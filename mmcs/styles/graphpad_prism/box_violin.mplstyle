@@ -1,0 +1,15 @@
+axes.titlepad : 10
+xtick.labelsize : 10
+ytick.labelsize : 10
+patch.facecolor: AAAAAA
+patch.linewidth: 0.0
+boxplot.patchartist: True
+boxplot.boxprops.color: black
+boxplot.boxprops.linewidth: 0.8
+boxplot.whiskerprops.color: black
+boxplot.whiskerprops.linewidth: 0.8
+boxplot.capprops.linewidth: 0.0
+boxplot.showmeans: False
+boxplot.medianprops.color: black
+boxplot.medianprops.linewidth: 1.0
+axes.prop_cycle: cycler('color', ['52abdd', 'e59f00'])

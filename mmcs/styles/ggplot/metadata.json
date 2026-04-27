@@ -1,0 +1,11 @@
+{
+    "name": "ggplot",
+    "category": "R ggplot",
+    "display_name": "R ggplot Style",
+    "chart_types": ["bubble"],
+    "description": "R ggplot2-inspired style with grid lines and full axis spines",
+    "base_style": null,
+    "chart_styles": {
+        "bubble": "bubble.mplstyle"
+    }
+}

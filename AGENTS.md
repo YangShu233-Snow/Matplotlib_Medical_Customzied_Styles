@@ -13,7 +13,8 @@ pip install -e ".[dev]"   # quotes are required in zsh
 
 ## Commands
 
-- **Scaffold a new style:** `./scripts/new_style.sh <style_name>`
+- **Scaffold a new style family:** `./scripts/new_style.sh <style_name>` (creates `mmcs/styles/<style_name>/` with base `.mplstyle` + `metadata.json`)
+- **Run all checks (ruff + metadata + markdown + pytest):** `./scripts/check.sh`
 - **Run all tests:** `pytest` (auto-discovers `.mplstyle` and `example.py` files under `styles/`)
 - **Run a single test file:** `pytest test/test_examples.py -k <style_dir_name>`
 

@@ -1,0 +1,23 @@
+font.family : sans-serif
+font.sans-serif : Arial, Helvetica, DejaVu Sans
+axes.titlepad : 12.0
+axes.linewidth : 1.0
+axes.grid : True
+axes.grid.axis : both
+axes.grid.which : major
+grid.color : "cccccc"
+grid.linestyle : :
+grid.linewidth : 0.8
+grid.alpha : 0.75
+xtick.major.width : 1.5
+ytick.major.width : 1.5
+xtick.major.size : 6
+ytick.major.size : 6
+xtick.labelsize : 12
+ytick.labelsize : 12
+axes.labelsize : 14
+axes.titlesize : 16
+legend.frameon : False
+legend.labelspacing : 1.5
+legend.borderpad : 1
+axes.prop_cycle : cycler('color', ['CC0000', 'E53300', 'FF6600', 'FF9900', 'FFCC00', '99B200', '339900', '1A8066', '0066CC', '3333CC', '6600CC', '8800E6', 'AA00FF'])

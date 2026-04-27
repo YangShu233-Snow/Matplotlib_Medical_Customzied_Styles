@@ -1,0 +1,6 @@
+font.weight : bold
+axes.linewidth : 1.0
+axes.prop_cycle: cycler('color', ['444444'])
+lines.linewidth: 1.0
+scatter.marker : o
+scatter.edgecolors : none

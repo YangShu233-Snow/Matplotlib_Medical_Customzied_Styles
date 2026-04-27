@@ -1,0 +1,5 @@
+font.weight : bold
+patch.linewidth: 2.0
+patch.edgecolor: black
+errorbar.capsize: 4
+lines.linewidth: 0.8

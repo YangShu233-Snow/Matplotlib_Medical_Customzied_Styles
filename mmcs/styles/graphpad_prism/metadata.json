@@ -1,0 +1,21 @@
+{
+    "name": "graphpad_prism",
+    "category": "GraphPad Prism",
+    "display_name": "GraphPad Prism Style",
+    "chart_types": ["bar", "scatter", "boxplot", "violin", "box_violin", "histogram", "density", "regression"],
+    "description": "Publication-ready GraphPad Prism aesthetics with hidden top/right spines, bold labels, and inward ticks",
+    "base_style": "graphpad_prism.mplstyle",
+    "chart_styles": {
+        "bar": "bar.mplstyle",
+        "bar_multi": "bar_multi.mplstyle",
+        "bar_scatter": "bar_scatter.mplstyle",
+        "bar_clustered_scatter": "bar_clustered_scatter.mplstyle",
+        "scatter": "scatter.mplstyle",
+        "boxplot": "boxplot.mplstyle",
+        "violin": "violin.mplstyle",
+        "box_violin": "box_violin.mplstyle",
+        "histogram": "histogram.mplstyle",
+        "density": "density.mplstyle",
+        "regression": "regression.mplstyle"
+    }
+}

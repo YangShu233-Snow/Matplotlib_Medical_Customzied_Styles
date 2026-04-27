@@ -1,0 +1,16 @@
+axes.titlepad : 10
+xtick.labelsize : 10
+ytick.labelsize : 10
+boxplot.patchartist: True
+boxplot.boxprops.color: black
+boxplot.boxprops.linewidth: 1.5
+boxplot.showmeans: True
+boxplot.meanline: True
+boxplot.meanprops.color: red
+boxplot.meanprops.linestyle: --
+boxplot.meanprops.linewidth: 1.0
+boxplot.flierprops.marker: o
+boxplot.flierprops.markersize: 4.0
+boxplot.flierprops.markerfacecolor: CCCCCC
+boxplot.flierprops.markeredgecolor: black
+boxplot.flierprops.markeredgewidth: 0.5

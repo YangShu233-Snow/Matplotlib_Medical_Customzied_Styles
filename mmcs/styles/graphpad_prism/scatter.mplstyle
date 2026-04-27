@@ -1,0 +1,2 @@
+font.weight : bold
+axes.prop_cycle: cycler('color', ['BF3D3D', '3B5998', '55A868', '8C8C8C', 'E08E45', '6D4C7D', '1F7873', 'D9B031', '7F5539', '4A90E2'])

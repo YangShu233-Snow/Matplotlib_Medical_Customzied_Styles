@@ -1,0 +1,16 @@
+font.family : sans-serif
+font.sans-serif : Arial, Helvetica, DejaVu Sans
+font.weight : bold
+axes.linewidth: 0.8
+axes.edgecolor: black
+axes.spines.top: True
+axes.spines.bottom: True
+axes.spines.left: True
+axes.spines.right: True
+xtick.major.width : 1.5
+xtick.major.size : 6
+ytick.labelleft: False
+ytick.left: False
+xtick.labelsize : 16
+axes.labelsize : 16
+axes.titlesize : 16

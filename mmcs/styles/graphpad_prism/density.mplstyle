@@ -1,0 +1,4 @@
+axes.prop_cycle: cycler('color', ['E08E45', '3B5998', '8C8C8C', '55A868'])
+lines.linewidth : 2.0
+axes.titlepad : 15
+legend.frameon : False

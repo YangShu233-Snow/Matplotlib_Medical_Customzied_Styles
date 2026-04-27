@@ -3,16 +3,16 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "matplotlib-medical-customed-styles"
+name = "mmcs"
 version = "0.1.0"
-description = "A collection of custom matplotlib styles specifically designed for the medical and biological sciences."
+description = "Publication-ready matplotlib styles and chart builders for the medical and biological sciences."
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
 authors = [
     {name = "YangShu233-Snow"}
 ]
-keywords = ["matplotlib", "graphpad", "scientific-plotting", "medical-science"]
+keywords = ["matplotlib", "graphpad", "scientific-plotting", "medical-science", "bioinformatics"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
@@ -27,8 +27,8 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/YangShu233-Snow/Matplotlib_Medical_Customed_Styles"
-"Bug Tracker" = "https://github.com/YangShu233-Snow/Matplotlib_Medical_Customed_Styles/issues"
+"Homepage" = "https://github.com/YangShu233-Snow/Matplotlib_Medial_Customized_Styles"
+"Bug Tracker" = "https://github.com/YangShu233-Snow/Matplotlib_Medial_Customized_Styles/issues"
 
 [project.optional-dependencies]
 dev = [
@@ -43,9 +43,9 @@ target-version = "py312"
 select = ["E", "F", "I", "W"]
 ignore = ["E501"]
 
-[tool.setuptools]
-packages = ["styles"]
+[tool.setuptools.packages.find]
+include = ["mmcs", "mmcs.*"]
 
 [tool.pytest.ini_options]
-testpaths = ["test"]
+testpaths = ["tests"]
 pythonpath = ["."]

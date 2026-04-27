@@ -1,0 +1,8 @@
+figure.titleweight : bold
+axes.titlepad : 15
+xtick.minor.size: 0
+xtick.minor.pad : 5
+xtick.labelsize : 10
+ytick.labelsize : 10
+errorbar.capsize: 4
+lines.linewidth: 1.0

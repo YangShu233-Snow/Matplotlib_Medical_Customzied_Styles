@@ -1,0 +1,12 @@
+{
+    "name": "deeptools",
+    "category": "DeepTools",
+    "display_name": "DeepTools Style",
+    "chart_types": ["heatmap"],
+    "description": "Genomics-oriented heatmap styles inspired by deepTools",
+    "base_style": null,
+    "chart_styles": {
+        "heatmap_clustered": "heatmap_clustered.mplstyle",
+        "heatmap_multi": "heatmap_multi.mplstyle"
+    }
+}

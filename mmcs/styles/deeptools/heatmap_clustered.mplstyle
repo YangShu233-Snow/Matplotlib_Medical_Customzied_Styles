@@ -1,0 +1,27 @@
+font.family         : sans-serif
+font.sans-serif     : Arial, Helvetica, DejaVu Sans, sans-serif
+axes.spines.top     : False
+axes.spines.bottom  : False
+axes.spines.left    : False
+axes.spines.right   : False
+lines.linewidth      : 0.5
+xtick.bottom        : False
+xtick.top           : False
+ytick.left          : False
+ytick.right         : False
+xtick.labelsize     : 4
+ytick.labelsize     : 4
+axes.labelsize      : 6
+axes.titlesize      : 12
+axes.linewidth      : 0.0
+axes.xmargin        : 0
+axes.ymargin        : 0
+figure.facecolor    : white
+axes.facecolor      : white
+image.cmap          : RdBu_r
+legend.frameon      : False
+legend.fontsize     : 9
+figure.dpi          : 300
+savefig.dpi         : 300
+savefig.bbox        : tight
+savefig.pad_inches  : 0.1
