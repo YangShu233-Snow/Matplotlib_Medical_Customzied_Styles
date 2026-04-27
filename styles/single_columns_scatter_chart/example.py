@@ -124,6 +124,7 @@ def main():
     ylabel = 'Value'
     title = 'Title'
     img_name = 'example'
+    edge = False
 
     # 生成模拟数据
     np.random.seed(12)
@@ -157,16 +158,19 @@ def main():
     colors = generate_prism_colors(len(groups))
 
     # 1. 绘制柱状图底色 (设置透明度以便看清散点)
+    edgecolor = plt.rcParams['patch.edgecolor'] if edge else None
     ax.bar(x_pos, means, yerr=asymmetric_errs, width=0.6,
-            color=colors, error_kw={'zorder': 4})
+            color=colors, error_kw={'zorder': 4}, edgecolor=edgecolor)
 
     # 2. 绘制分布散点 (Scatter/Jitter)
     for i, data in enumerate(raw_data):
-        x_jittered = generate_jittered_x(data, r_x=len(groups) / fig_width * r / 72, r_y= np.max(means) / fig_heigth * r / 36) + x_pos[i]
+        x_jittered = generate_jittered_x(data, r_x=len(groups) / fig_width * r / 36, r_y= np.max(means) / fig_heigth * r / 36) + x_pos[i]
+        linewidths = plt.rcParams['lines.linewidth']
         ax.scatter(x_jittered, data,
                    color='white',
                    edgecolor='black',
                    alpha=0.7,
+                   linewidths=linewidths,
                    s=np.pi * r ** 2)
 
     # 3. 绘制显著性星号，传入原始数据以计算最高点

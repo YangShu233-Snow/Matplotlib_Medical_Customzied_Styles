@@ -34,6 +34,8 @@ def main():
     title = 'something'
     # 保存文件名
     img_name = 'example'
+    # 边缘
+    edge = False
 
     # 示例数据
     groups = ['Con', 'KO']
@@ -50,8 +52,9 @@ def main():
     colors = generate_prism_colors(len(groups))
 
     # 图表柱子的样式
+    edgecolor = plt.rcParams['patch.edgecolor'] if edge else None
     ax.bar(x_pos, means, yerr=asymmetric_errs, width=0.6,
-            color=colors)
+            color=colors, edgecolor=edgecolor)
 
     draw_stars(ax, groups_id=[1], stars=[3], means=means, errs=errs)
 

@@ -30,6 +30,11 @@ python example.py
 # 1. 文本信息
 ylabel = 'Your Y-axis Label'
 title = 'Your Plot Title'
+# 图片文件名
+img_name = 'example'
+
+# 是否为柱子画出边缘？
+edge = False
 
 # 2. 数据信息
 groups = ['Control', 'Treatment A']  # X轴标签
