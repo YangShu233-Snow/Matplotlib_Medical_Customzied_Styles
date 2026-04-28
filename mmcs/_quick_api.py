@@ -285,7 +285,7 @@ def heatmap_chart(
     dpi: int = 300,
     vmin: float = -3.0,
     vmax: float = 3.0,
-    cmap: str = "RdBu_r",
+    cmap: Optional[str] = None,
     colorbar_label: str = "",
     title: Optional[str] = None,
 ) -> ChartResult:

@@ -18,7 +18,6 @@ result = heatmap_chart(
     style="deeptools",
     vmin=-3,
     vmax=3,
-    cmap="RdBu_r",
     colorbar_label="$\\log_2$(Value)",
     title="Clustered Genomic Heatmap",
 )

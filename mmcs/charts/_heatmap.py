@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
+import matplotlib.pyplot as plt
 import numpy as np
 import scipy.cluster.hierarchy as sch
 from matplotlib.gridspec import GridSpec
@@ -17,13 +18,16 @@ def render(
     col_labels: Optional[list[str]] = None,
     vmin: float = -3.0,
     vmax: float = 3.0,
-    cmap: str = "RdBu_r",
+    cmap: Optional[str] = None,
     linkage_method: str = "ward",
     linkage_metric: str = "euclidean",
     colorbar_label: str = "",
 ) -> dict[str, Any]:
     data = np.asarray(data)
     n_genes, n_samples = data.shape
+
+    if cmap is None:
+        cmap = plt.rcParams.get("image.cmap", "RdBu_r")
 
     row_linkage = sch.linkage(data, method=linkage_method, metric=linkage_metric)
     col_linkage = sch.linkage(data.T, method=linkage_method, metric=linkage_metric)
