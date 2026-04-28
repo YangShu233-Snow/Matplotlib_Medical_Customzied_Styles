@@ -81,13 +81,15 @@ class Style:
     def apply(self, rcParams: dict | None = None, chart_type: str | None = None) -> None:
         import matplotlib.pyplot as plt
 
-        if chart_type is not None and chart_type not in self._info["chart_types"]:
-            warnings.warn(
-                f"Style '{self.name}' does not declare compatibility with "
-                f"chart type '{chart_type}'. Visual output may not be as intended. "
-                f"Declared chart types: {self._info['chart_types']}",
-                stacklevel=2,
-            )
+        if chart_type is not None:
+            known = set(self._info["chart_types"]) | set(self._info["chart_styles"].keys())
+            if chart_type not in known:
+                warnings.warn(
+                    f"Style '{self.name}' does not declare compatibility with "
+                    f"chart type '{chart_type}'. Visual output may not be as intended. "
+                    f"Declared: {sorted(known)}",
+                    stacklevel=2,
+                )
 
         if self._info["base_style"]:
             plt.style.use(self._info["base_style"])
