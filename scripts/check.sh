@@ -67,9 +67,9 @@ echo ""
 # ---- pytest (required) ----
 echo -e "${GREEN}[5/5] Running pytest...${NC}"
 if command -v pytest &>/dev/null; then
-    pytest -v && echo -e "${GREEN}  pytest: OK${NC}" || { echo -e "${RED}  pytest: FAILED${NC}"; exit 1; }
+    pytest -v --mpl --mpl-default-tolerance=20 && echo -e "${GREEN}  pytest: OK${NC}" || { echo -e "${RED}  pytest: FAILED${NC}"; exit 1; }
 elif command -v python &>/dev/null && python -m pytest --version &>/dev/null; then
-    python -m pytest -v && echo -e "${GREEN}  pytest: OK${NC}" || { echo -e "${RED}  pytest: FAILED${NC}"; exit 1; }
+    python -m pytest -v --mpl --mpl-default-tolerance=20 && echo -e "${GREEN}  pytest: OK${NC}" || { echo -e "${RED}  pytest: FAILED${NC}"; exit 1; }
 else
     echo -e "${RED}  pytest not found. Install it with: pip install -e \".[dev]\"${NC}"
     exit 1
