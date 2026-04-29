@@ -30,7 +30,7 @@ jobs:
 
     - name: Lint Markdown with markdownlint-cli
       run: |
-        npx --yes markdownlint-cli@0.48.0 'styles/*/readme.md' README.md CONTRIBUTING.md llms.md AGENTS.md
+        npx --yes markdownlint-cli@0.48.0 'README.md' 'CONTRIBUTING.md' 'llms.md' 'AGENTS.md'
 
     - name: Run tests with pytest
       run: |
