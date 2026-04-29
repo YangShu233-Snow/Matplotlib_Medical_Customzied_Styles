@@ -2,41 +2,72 @@
 
 **Role:** Expert Scientific Data Visualization Engineer (Medical & Biological Sciences specialist).
 
-This repository, **Matplotlib_Medical_Customed_Style**, is a collection of `matplotlib` styles designed to mimic GraphPad Prism and other professional scientific plotting tools (e.g., DeepTools) for publication-ready medical charts.
+This repository, **MMCS (Matplotlib Medical Customized Styles)**, is a Python library that provides publication-ready `matplotlib` styles and chart builders designed for the medical and biological sciences. It wraps GraphPad Prism, ggplot2, and DeepTools-inspired aesthetics into a pip-installable package (`mmcs`).
 
-## 🤖 AI Agent Constraints (CRITICAL)
+## 🤖 AI Agent Constraints
 
 If you are an AI Agent participating in the development of this project, you **MUST**:
 
-1. Strictly adhere to all coding conventions, style decoupling rules, and the PR guidelines defined in this repository.
-2. Read the `.aiignore` file and translate its contents into your specific ignore format (e.g., `.cursorignore`, `.geminiignore`, etc.) to ensure you do not process or alter irrelevant files (such as generated images or cache directories).
+1. Read `AGENTS.md` first — it contains the high-signal workflow instructions.
+2. Read `PLAN.md` — it documents the full refactoring architecture, API design decisions, and phased roadmap.
+3. Read `CONTRIBUTING.md` before making any contribution.
+4. Translate `.aiignore` into your tool's ignore format (e.g., `.cursorignore`, `.geminiignore`).
+5. Use `conda activate Matplotlib_Medial_Customzied_Styles` to activate the development environment.
 
 ## 📁 Project Structure
 
-- `/styles/<style_name>/`: Modular directory for each chart type.
-  - `assets/*.mplstyle`: Core style definitions (Mandatory: Keep logic here, not in Python).
-  - `example.py`: Self-contained, reproducible demo script.
-  - `img/*.{png,pdf}`: Visual outputs (Both high-res and vector formats required).
-  - `readme.md`: Style-specific documentation and image preview.
-- `/scripts/new_style.sh`: Scaffolding script to initialize a new style directory.
+```
+mmcs/                            # Python package (pip install mmcs)
+  __init__.py                    # Public API: profile, chart functions, Style, StyleContext
+  _registry.py                   # Style discovery + metadata loading
+  _context.py                    # StyleContext — dynamic rcParams injection
+  _profile.py                    # 12 zero-config profile presets
+  _quick_api/                    # Quick API layer (11 submodules)
+    _bar.py, _box.py, _violin.py, ...
+  charts/                        # Chart renderers (13 submodules)
+    _bar.py, _boxplot.py, _violin.py, ...
+  _utils/                        # Utility functions
+    _stats.py                    # Bandwidth, significance stars, KDE, optimal bins
+    _annotation.py               # Sample sizes, jitter
+    _export.py                   # PNG/PDF dual export
+  styles/                        # .mplstyle files (3 style families)
+    graphpad_prism/
+    ggplot/
+    deeptools/
+examples/                        # 17 example scripts
+docs/                            # MkDocs Material documentation site (zh/en)
+tests/                           # 130+ tests
+scripts/                         # new_style.sh, check.sh
+```
 
 ## 🛠️ Mandatory Coding Checklist
 
-- [ ] **Scaffolding**: Use `./scripts/new_style.sh <name>` to start a new style.
-- [ ] **Dynamic Paths**: Use `pathlib.Path(__file__).parent` for all file resolutions.
-- [ ] **Style Initialization**: Load `.mplstyle` BEFORE creating any figures or axes.
-- [ ] **Script Structure**: Use `main()`, type hints, and follow the template in `CONTRIBUTING.md`.
-- [ ] **Aesthetics**: Removed top/right spines, bold labels (`font.weight: bold`), and upper-only error bars for biological data.
-- [ ] **Dual Export**: Always save results to `img/` as both `.png` and `.pdf`.
+- [ ] **Scaffolding**: Use `./scripts/new_style.sh <name>` to start a new style family.
+- [ ] **Paths**: Use `pathlib.Path` exclusively (root reference: `Path(__file__).parent`).
+- [ ] **Style loading**: Load `.mplstyle` via `plt.style.use()` **BEFORE** `plt.subplots()`.
+- [ ] **Style decoupling**: Keep all styling in `.mplstyle` files, not in Python code.
+- [ ] **Dual export**: Always save as both `.png` and `.pdf` to `img/`.
+- [ ] **Headless-safe**: Leave `plt.show()` commented out.
+- [ ] **Docstrings**: All public API must have Google-style docstrings.
+- [ ] **Aesthetics**: Hidden top/right spines, bold labels, inward ticks, upper-only error bars.
 
-## ⚠️ Pitfalls to Avoid
+## ⚠️ Critical Design Rules
 
-- **Style Coupling**: Do not put style logic inside `example.py`. Keep it in the `.mplstyle` asset.
-- **Manual Formatting**: Avoid redundant `plt.rcParams` or `ax.spines` calls if they can be handled by the style sheet.
-- **Inconsistent Docs**: Ensure the `readme.md` image link and description match the actual generated output.
+- **Style × Chart = Orthogonal**: Any style works with any chart type. Declare compatibility via `metadata.json` (`chart_types` and `chart_styles` keys).
+- **Three API Layers**: Profile presets → Quick API → Renderers. Profile is the highest level.
+- **StyleContext**: General dynamic injection layer for runtime defaults (colors, spacing, etc.). Not just a color manager.
+- **Renderer purity**: Renderers do NOT infer default values. All defaults come from the caller (via `StyleContext`).
+- **Colors**: `.mplstyle` defines `axes.prop_cycle` palette. `bar.render()` uniformly samples from it. No hardcoded colors.
+- **Heatmap cmap**: Read from `plt.rcParams["image.cmap"]` (set by `.mplstyle`), not hardcoded.
 
-## 🤝 Contribution Guidelines
+## ⚠️ .mplstyle Pitfalls
 
-- **Mandatory Read**: Always consult `CONTRIBUTING.md` before making changes.
-- **PR Requirements**: New styles MUST include the full directory structure and a descriptive `readme.md` with an embedded preview.
-- **Guidance**: If the user asks about contributing or PRs, summarize the rules from `CONTRIBUTING.md`.
+- **Hex colors**: Do NOT use `#` prefix (e.g. write `003366`, not `#003366`).
+- **Violinplot**: matplotlib native `violinplot` does NOT inherit `patch.rcParams`. Use the custom KDE renderer in `mmcs.charts._violin`.
+- **Composite alignment**: When overlaying components (e.g. box+violin), compute geometric center offsets.
+
+## 🤝 Contribution Guidance
+
+- Read `CONTRIBUTING.md` and `AGENTS.md` before making changes.
+- PR requirements: run `./scripts/check.sh` (ruff + pytest), follow Conventional Commits format.
+- New chart renderers need: module in `mmcs/charts/`, Quick API in `mmcs/_quick_api/`, Profile preset in `mmcs/_profile.py`, tests, and docs.
